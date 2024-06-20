@@ -13,6 +13,15 @@
 		D49AEB992C21658D00018036 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = D49AEB982C21658D00018036 /* Base */; };
 		D49AEB9B2C21658F00018036 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D49AEB9A2C21658F00018036 /* Assets.xcassets */; };
 		D49AEB9E2C21658F00018036 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = D49AEB9D2C21658F00018036 /* Base */; };
+		D49AEBA72C23B71800018036 /* MoyaProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49AEBA62C23B71800018036 /* MoyaProvider.swift */; };
+		D49AEBAB2C23B82000018036 /* CombineMoya in Frameworks */ = {isa = PBXBuildFile; productRef = D49AEBAA2C23B82000018036 /* CombineMoya */; };
+		D49AEBAD2C23B82000018036 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = D49AEBAC2C23B82000018036 /* Moya */; };
+		D49AEBAF2C23B82000018036 /* ReactiveMoya in Frameworks */ = {isa = PBXBuildFile; productRef = D49AEBAE2C23B82000018036 /* ReactiveMoya */; };
+		D49AEBB12C23B82000018036 /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = D49AEBB02C23B82000018036 /* RxMoya */; };
+		D49AEBB32C23B90B00018036 /* NetworkLoggerPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49AEBB22C23B90B00018036 /* NetworkLoggerPlugin.swift */; };
+		D49AEBB52C23C9BC00018036 /* FLOAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49AEBB42C23C9BC00018036 /* FLOAPI.swift */; };
+		D49AEBB72C23CE1B00018036 /* FLOError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49AEBB62C23CE1B00018036 /* FLOError.swift */; };
+		D49AEBBB2C23E13500018036 /* BrowserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49AEBBA2C23E13500018036 /* BrowserModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +33,11 @@
 		D49AEB9A2C21658F00018036 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D49AEB9D2C21658F00018036 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D49AEB9F2C21658F00018036 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D49AEBA62C23B71800018036 /* MoyaProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaProvider.swift; sourceTree = "<group>"; };
+		D49AEBB22C23B90B00018036 /* NetworkLoggerPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLoggerPlugin.swift; sourceTree = "<group>"; };
+		D49AEBB42C23C9BC00018036 /* FLOAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FLOAPI.swift; sourceTree = "<group>"; };
+		D49AEBB62C23CE1B00018036 /* FLOError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FLOError.swift; sourceTree = "<group>"; };
+		D49AEBBA2C23E13500018036 /* BrowserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +45,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D49AEBAD2C23B82000018036 /* Moya in Frameworks */,
+				D49AEBAB2C23B82000018036 /* CombineMoya in Frameworks */,
+				D49AEBB12C23B82000018036 /* RxMoya in Frameworks */,
+				D49AEBAF2C23B82000018036 /* ReactiveMoya in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +60,7 @@
 			children = (
 				D49AEB902C21658D00018036 /* FLO */,
 				D49AEB8F2C21658D00018036 /* Products */,
+				D49AEBA92C23B82000018036 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,6 +75,8 @@
 		D49AEB902C21658D00018036 /* FLO */ = {
 			isa = PBXGroup;
 			children = (
+				D49AEBB82C23DA6300018036 /* Presentation */,
+				D49AEBA52C23B70B00018036 /* Network */,
 				D49AEB912C21658D00018036 /* AppDelegate.swift */,
 				D49AEB932C21658D00018036 /* SceneDelegate.swift */,
 				D49AEB952C21658D00018036 /* ViewController.swift */,
@@ -65,6 +86,40 @@
 				D49AEB9F2C21658F00018036 /* Info.plist */,
 			);
 			path = FLO;
+			sourceTree = "<group>";
+		};
+		D49AEBA52C23B70B00018036 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				D49AEBA62C23B71800018036 /* MoyaProvider.swift */,
+				D49AEBB22C23B90B00018036 /* NetworkLoggerPlugin.swift */,
+				D49AEBB42C23C9BC00018036 /* FLOAPI.swift */,
+				D49AEBB62C23CE1B00018036 /* FLOError.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		D49AEBA92C23B82000018036 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D49AEBB82C23DA6300018036 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				D49AEBB92C23DFF700018036 /* Browser */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		D49AEBB92C23DFF700018036 /* Browser */ = {
+			isa = PBXGroup;
+			children = (
+				D49AEBBA2C23E13500018036 /* BrowserModel.swift */,
+			);
+			path = Browser;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +138,12 @@
 			dependencies = (
 			);
 			name = FLO;
+			packageProductDependencies = (
+				D49AEBAA2C23B82000018036 /* CombineMoya */,
+				D49AEBAC2C23B82000018036 /* Moya */,
+				D49AEBAE2C23B82000018036 /* ReactiveMoya */,
+				D49AEBB02C23B82000018036 /* RxMoya */,
+			);
 			productName = FLO;
 			productReference = D49AEB8E2C21658D00018036 /* FLO.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +172,9 @@
 				Base,
 			);
 			mainGroup = D49AEB852C21658D00018036;
+			packageReferences = (
+				D49AEBA82C23B74800018036 /* XCRemoteSwiftPackageReference "Moya" */,
+			);
 			productRefGroup = D49AEB8F2C21658D00018036 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -139,7 +203,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				D49AEB962C21658D00018036 /* ViewController.swift in Sources */,
+				D49AEBB72C23CE1B00018036 /* FLOError.swift in Sources */,
+				D49AEBBB2C23E13500018036 /* BrowserModel.swift in Sources */,
 				D49AEB922C21658D00018036 /* AppDelegate.swift in Sources */,
+				D49AEBB52C23C9BC00018036 /* FLOAPI.swift in Sources */,
+				D49AEBB32C23B90B00018036 /* NetworkLoggerPlugin.swift in Sources */,
+				D49AEBA72C23B71800018036 /* MoyaProvider.swift in Sources */,
 				D49AEB942C21658D00018036 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -305,7 +374,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.FLO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.FLO.youngmin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -333,7 +402,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.FLO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.FLO.youngmin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -363,6 +432,40 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D49AEBA82C23B74800018036 /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 15.0.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D49AEBAA2C23B82000018036 /* CombineMoya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D49AEBA82C23B74800018036 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = CombineMoya;
+		};
+		D49AEBAC2C23B82000018036 /* Moya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D49AEBA82C23B74800018036 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = Moya;
+		};
+		D49AEBAE2C23B82000018036 /* ReactiveMoya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D49AEBA82C23B74800018036 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = ReactiveMoya;
+		};
+		D49AEBB02C23B82000018036 /* RxMoya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D49AEBA82C23B74800018036 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = RxMoya;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D49AEB862C21658D00018036 /* Project object */;
 }
