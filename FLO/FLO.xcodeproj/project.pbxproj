@@ -22,6 +22,13 @@
 		D49AEBB52C23C9BC00018036 /* FLOAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49AEBB42C23C9BC00018036 /* FLOAPI.swift */; };
 		D49AEBB72C23CE1B00018036 /* FLOError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49AEBB62C23CE1B00018036 /* FLOError.swift */; };
 		D49AEBBB2C23E13500018036 /* BrowserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49AEBBA2C23E13500018036 /* BrowserModel.swift */; };
+		D49AEBDF2C245FB000018036 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = D49AEBDE2C245FB000018036 /* SnapKit */; };
+		D49AEBE12C245FB000018036 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = D49AEBE02C245FB000018036 /* SnapKit-Dynamic */; };
+		D49AEBE42C245FDB00018036 /* ReactorKit in Frameworks */ = {isa = PBXBuildFile; productRef = D49AEBE32C245FDB00018036 /* ReactorKit */; };
+		D49AEBE72C245FED00018036 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = D49AEBE62C245FED00018036 /* Kingfisher */; };
+		D49AEBEA2C2460BC00018036 /* MusicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49AEBE92C2460BC00018036 /* MusicCell.swift */; };
+		D49AEBEC2C2467E300018036 /* GenreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49AEBEB2C2467E300018036 /* GenreCell.swift */; };
+		D49AEBEF2C25040900018036 /* TrackDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49AEBEE2C25040900018036 /* TrackDetailModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +45,9 @@
 		D49AEBB42C23C9BC00018036 /* FLOAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FLOAPI.swift; sourceTree = "<group>"; };
 		D49AEBB62C23CE1B00018036 /* FLOError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FLOError.swift; sourceTree = "<group>"; };
 		D49AEBBA2C23E13500018036 /* BrowserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserModel.swift; sourceTree = "<group>"; };
+		D49AEBE92C2460BC00018036 /* MusicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicCell.swift; sourceTree = "<group>"; };
+		D49AEBEB2C2467E300018036 /* GenreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreCell.swift; sourceTree = "<group>"; };
+		D49AEBEE2C25040900018036 /* TrackDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackDetailModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,8 +57,12 @@
 			files = (
 				D49AEBAD2C23B82000018036 /* Moya in Frameworks */,
 				D49AEBAB2C23B82000018036 /* CombineMoya in Frameworks */,
+				D49AEBE42C245FDB00018036 /* ReactorKit in Frameworks */,
 				D49AEBB12C23B82000018036 /* RxMoya in Frameworks */,
+				D49AEBE72C245FED00018036 /* Kingfisher in Frameworks */,
 				D49AEBAF2C23B82000018036 /* ReactiveMoya in Frameworks */,
+				D49AEBDF2C245FB000018036 /* SnapKit in Frameworks */,
+				D49AEBE12C245FB000018036 /* SnapKit-Dynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,6 +89,7 @@
 		D49AEB902C21658D00018036 /* FLO */ = {
 			isa = PBXGroup;
 			children = (
+				D49AEBED2C2503F500018036 /* Models */,
 				D49AEBB82C23DA6300018036 /* Presentation */,
 				D49AEBA52C23B70B00018036 /* Network */,
 				D49AEB912C21658D00018036 /* AppDelegate.swift */,
@@ -91,8 +106,7 @@
 		D49AEBA52C23B70B00018036 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				D49AEBA62C23B71800018036 /* MoyaProvider.swift */,
-				D49AEBB22C23B90B00018036 /* NetworkLoggerPlugin.swift */,
+				D49AEBBC2C23EDE500018036 /* Moya + Extension */,
 				D49AEBB42C23C9BC00018036 /* FLOAPI.swift */,
 				D49AEBB62C23CE1B00018036 /* FLOError.swift */,
 			);
@@ -117,9 +131,36 @@
 		D49AEBB92C23DFF700018036 /* Browser */ = {
 			isa = PBXGroup;
 			children = (
-				D49AEBBA2C23E13500018036 /* BrowserModel.swift */,
+				D49AEBE82C24607600018036 /* Cells */,
 			);
 			path = Browser;
+			sourceTree = "<group>";
+		};
+		D49AEBBC2C23EDE500018036 /* Moya + Extension */ = {
+			isa = PBXGroup;
+			children = (
+				D49AEBA62C23B71800018036 /* MoyaProvider.swift */,
+				D49AEBB22C23B90B00018036 /* NetworkLoggerPlugin.swift */,
+			);
+			path = "Moya + Extension";
+			sourceTree = "<group>";
+		};
+		D49AEBE82C24607600018036 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				D49AEBE92C2460BC00018036 /* MusicCell.swift */,
+				D49AEBEB2C2467E300018036 /* GenreCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		D49AEBED2C2503F500018036 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D49AEBBA2C23E13500018036 /* BrowserModel.swift */,
+				D49AEBEE2C25040900018036 /* TrackDetailModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -143,6 +184,10 @@
 				D49AEBAC2C23B82000018036 /* Moya */,
 				D49AEBAE2C23B82000018036 /* ReactiveMoya */,
 				D49AEBB02C23B82000018036 /* RxMoya */,
+				D49AEBDE2C245FB000018036 /* SnapKit */,
+				D49AEBE02C245FB000018036 /* SnapKit-Dynamic */,
+				D49AEBE32C245FDB00018036 /* ReactorKit */,
+				D49AEBE62C245FED00018036 /* Kingfisher */,
 			);
 			productName = FLO;
 			productReference = D49AEB8E2C21658D00018036 /* FLO.app */;
@@ -174,6 +219,9 @@
 			mainGroup = D49AEB852C21658D00018036;
 			packageReferences = (
 				D49AEBA82C23B74800018036 /* XCRemoteSwiftPackageReference "Moya" */,
+				D49AEBDD2C245FAF00018036 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				D49AEBE22C245FDB00018036 /* XCRemoteSwiftPackageReference "ReactorKit" */,
+				D49AEBE52C245FED00018036 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = D49AEB8F2C21658D00018036 /* Products */;
 			projectDirPath = "";
@@ -204,6 +252,9 @@
 			files = (
 				D49AEB962C21658D00018036 /* ViewController.swift in Sources */,
 				D49AEBB72C23CE1B00018036 /* FLOError.swift in Sources */,
+				D49AEBEA2C2460BC00018036 /* MusicCell.swift in Sources */,
+				D49AEBEF2C25040900018036 /* TrackDetailModel.swift in Sources */,
+				D49AEBEC2C2467E300018036 /* GenreCell.swift in Sources */,
 				D49AEBBB2C23E13500018036 /* BrowserModel.swift in Sources */,
 				D49AEB922C21658D00018036 /* AppDelegate.swift in Sources */,
 				D49AEBB52C23C9BC00018036 /* FLOAPI.swift in Sources */,
@@ -442,6 +493,30 @@
 				minimumVersion = 15.0.3;
 			};
 		};
+		D49AEBDD2C245FAF00018036 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+		D49AEBE22C245FDB00018036 /* XCRemoteSwiftPackageReference "ReactorKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactorKit/ReactorKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.2.0;
+			};
+		};
+		D49AEBE52C245FED00018036 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.12.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -464,6 +539,26 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D49AEBA82C23B74800018036 /* XCRemoteSwiftPackageReference "Moya" */;
 			productName = RxMoya;
+		};
+		D49AEBDE2C245FB000018036 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D49AEBDD2C245FAF00018036 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		D49AEBE02C245FB000018036 /* SnapKit-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D49AEBDD2C245FAF00018036 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = "SnapKit-Dynamic";
+		};
+		D49AEBE32C245FDB00018036 /* ReactorKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D49AEBE22C245FDB00018036 /* XCRemoteSwiftPackageReference "ReactorKit" */;
+			productName = ReactorKit;
+		};
+		D49AEBE62C245FED00018036 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D49AEBE52C245FED00018036 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
