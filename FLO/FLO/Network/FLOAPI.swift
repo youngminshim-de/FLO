@@ -52,7 +52,7 @@ extension FLOAPI {
         return provider.request(.browser)
     }
     
-    static func trackDetail(trackId: String) -> Observable<TrackDetailResponse> {
+    static func trackDetail(trackId: String) -> Observable<APIResponse<TrackDetailModel>> {
         return provider.request(.trackDetail(trackId: trackId))
     }
 }
