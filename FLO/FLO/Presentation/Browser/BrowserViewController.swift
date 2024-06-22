@@ -39,6 +39,8 @@ private let ITEM_INSET: NSDirectionalEdgeInsets = .init(top: 4,
 class BrowserViewController: UIViewController, View {
     var disposeBag = DisposeBag()
     let reactor = BrowserReactor()
+    
+    private var currentBannerPage = PublishSubject<(Int, Int)>()
 
     private lazy var collectionView: UICollectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: getLayout())
@@ -53,6 +55,7 @@ class BrowserViewController: UIViewController, View {
         view.register(VideoCell.self, forCellWithReuseIdentifier: VideoCell.reuseIdentifier)
         view.register(ChartHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: ChartHeaderView.reuseIdentifier)
         view.register(StandardHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: StandardHeaderView.reuseIdentifier)
+        view.register(PageIndicatorFooterView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: PageIndicatorFooterView.reuseIdentifier)
         view.dataSource = self
         return view
     }()
@@ -89,9 +92,9 @@ class BrowserViewController: UIViewController, View {
 //MARK: - UICollectionViewCompositionalLayout
 extension BrowserViewController {
     func getLayout() -> UICollectionViewCompositionalLayout {
-        let layout = UICollectionViewCompositionalLayout { (section, environment) ->
+        let layout = UICollectionViewCompositionalLayout { (sectionIndex, environment) ->
             NSCollectionLayoutSection? in
-            switch self.dataSource[section] {
+            switch self.dataSource[sectionIndex] {
             case .music:
                 // item
                 let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
@@ -116,15 +119,21 @@ extension BrowserViewController {
                 // header
                 let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(56))
                 let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .topLeading)
-
+                
+                // footer (UIPageControl)
+                let footerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(40))
+                let footer = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: footerSize, elementKind: UICollectionView.elementKindSectionFooter, alignment: .bottom)
                 // decoration
                 let decoration = NSCollectionLayoutDecorationItem.background(elementKind: ChartSectionBackgroundView.elementKind)
                 
                 section.decorationItems = [decoration]
-                section.boundarySupplementaryItems = [header]
+                section.boundarySupplementaryItems = [header, footer]
                 
                 section.contentInsets = SECTION_INSET
-                
+                section.visibleItemsInvalidationHandler = { [weak self] (items, offset, environment) in
+                    let currentPage = Int(max(0, round(offset.x / environment.container.contentSize.width)))
+                    self?.currentBannerPage.onNext((sectionIndex,currentPage))
+                }
                 return section
                 
             case .genre:
@@ -321,44 +330,57 @@ extension BrowserViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        guard kind == UICollectionView.elementKindSectionHeader else {
-            return UICollectionReusableView()
-        }
-        
-        var headerView: UICollectionReusableView
-        
-        switch self.dataSource[indexPath.section] {
-        case let .music(chart):
-            guard let chartHeaderView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: ChartHeaderView.reuseIdentifier, for: indexPath) as? ChartHeaderView else {
-                return UICollectionReusableView()
-            }
-            chartHeaderView.configure(title: chart.name,
-                                 basedOnUpdate: chart.basedOnUpdate,
-                                 description: chart.description)
-            headerView = chartHeaderView
+        switch kind {
+        case UICollectionView.elementKindSectionHeader:
+            var headerView: UICollectionReusableView
+            
+            switch self.dataSource[indexPath.section] {
+            case let .music(chart):
+                guard let chartHeaderView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: ChartHeaderView.reuseIdentifier, for: indexPath) as? ChartHeaderView else {
+                    return UICollectionReusableView()
+                }
+                chartHeaderView.configure(title: chart.name,
+                                     basedOnUpdate: chart.basedOnUpdate,
+                                     description: chart.description)
+                headerView = chartHeaderView
 
-        case let .genre(section):
-            guard let standardHeaderView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: StandardHeaderView.reuseIdentifier, for: indexPath) as? StandardHeaderView else {
+            case let .genre(section):
+                guard let standardHeaderView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: StandardHeaderView.reuseIdentifier, for: indexPath) as? StandardHeaderView else {
+                    return UICollectionReusableView()
+                }
+                standardHeaderView.configure(title: section.name)
+                headerView = standardHeaderView
+            case let .audio(programList):
+                guard let standardHeaderView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: StandardHeaderView.reuseIdentifier, for: indexPath) as? StandardHeaderView else {
+                    return UICollectionReusableView()
+                }
+                standardHeaderView.configure(title: programList.name)
+                headerView = standardHeaderView
+            case let .representVideo(videoList):
+                guard let standardHeaderView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: StandardHeaderView.reuseIdentifier, for: indexPath) as? StandardHeaderView else {
+                    return UICollectionReusableView()
+                }
+                standardHeaderView.configure(title: videoList.name)
+                headerView = standardHeaderView
+            default:
                 return UICollectionReusableView()
             }
-            standardHeaderView.configure(title: section.name)
-            headerView = standardHeaderView
-        case let .audio(programList):
-            guard let standardHeaderView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: StandardHeaderView.reuseIdentifier, for: indexPath) as? StandardHeaderView else {
-                return UICollectionReusableView()
-            }
-            standardHeaderView.configure(title: programList.name)
-            headerView = standardHeaderView
-        case let .representVideo(videoList):
-            guard let standardHeaderView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: StandardHeaderView.reuseIdentifier, for: indexPath) as? StandardHeaderView else {
-                return UICollectionReusableView()
-            }
-            standardHeaderView.configure(title: videoList.name)
-            headerView = standardHeaderView
-        default:
-            return UICollectionReusableView()
-        }
 
-        return headerView
+            return headerView
+        case UICollectionView.elementKindSectionFooter:
+            switch self.dataSource[indexPath.section] {
+            case let .music(chart):
+                guard let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: PageIndicatorFooterView.reuseIdentifier, for: indexPath) as? PageIndicatorFooterView else {
+                    return UICollectionReusableView()
+                }
+                
+                footerView.bind(input: currentBannerPage,
+                                pageNumber: Int(chart.trackList.count / 4),
+                                selectedSection: indexPath.section)
+                return footerView
+            default: return UICollectionReusableView()
+            }
+        default: return UICollectionReusableView()
+        }
     }
 }

@@ -30,6 +30,7 @@ final class BrowserReactor: Reactor {
     
     struct State {
         var dataSource: [BrowserSection] = []
+        var currentPage: Int = 0
     }
     
     let initialState = State()
@@ -40,7 +41,6 @@ final class BrowserReactor: Reactor {
         case .viewDidLoad:
             return fetchData()
                 .map { Mutation.setDatasource(data: $0) }
-            
         case .onTapAchor:
             return Observable.just(Mutation.setAnchor)
         }
@@ -60,6 +60,7 @@ final class BrowserReactor: Reactor {
             dataSource.append(.videoCarousel(data.videoPlayList.videoListExceptFirst))
             newState.dataSource = dataSource
             return newState
+
         case .setAnchor:
             //TODO: Anchor click 시 scroll 처리 필요
             var newState  = state
@@ -78,7 +79,5 @@ final class BrowserReactor: Reactor {
                 print(error)
             })
             .catchAndReturn(nil)
-            
-            
     }
 }
