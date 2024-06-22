@@ -40,6 +40,8 @@
 		D4C0781C2C26BF440083A53F /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = D4C0781B2C26BF440083A53F /* RxCocoa */; };
 		D4C0781F2C26BF780083A53F /* ReactorKit in Frameworks */ = {isa = PBXBuildFile; productRef = D4C0781E2C26BF780083A53F /* ReactorKit */; };
 		D4C078222C26D0200083A53F /* PageIndicatorFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C078212C26D0200083A53F /* PageIndicatorFooterView.swift */; };
+		D4C078242C26F0E70083A53F /* BrowserViewController + DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C078232C26F0E70083A53F /* BrowserViewController + DataSource.swift */; };
+		D4C078262C26F1390083A53F /* BrowserViewController + UICollectionViewCompositionalLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C078252C26F1390083A53F /* BrowserViewController + UICollectionViewCompositionalLayout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +72,8 @@
 		D4C077F02C267AC20083A53F /* VideoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoModel.swift; sourceTree = "<group>"; };
 		D4C077F22C26800F0083A53F /* BrowserReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserReactor.swift; sourceTree = "<group>"; };
 		D4C078212C26D0200083A53F /* PageIndicatorFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageIndicatorFooterView.swift; sourceTree = "<group>"; };
+		D4C078232C26F0E70083A53F /* BrowserViewController + DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BrowserViewController + DataSource.swift"; sourceTree = "<group>"; };
+		D4C078252C26F1390083A53F /* BrowserViewController + UICollectionViewCompositionalLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BrowserViewController + UICollectionViewCompositionalLayout.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +160,8 @@
 				D49AEBE82C24607600018036 /* Cells */,
 				D4C077F22C26800F0083A53F /* BrowserReactor.swift */,
 				D49AEB952C21658D00018036 /* BrowserViewController.swift */,
+				D4C078232C26F0E70083A53F /* BrowserViewController + DataSource.swift */,
+				D4C078252C26F1390083A53F /* BrowserViewController + UICollectionViewCompositionalLayout.swift */,
 			);
 			path = Browser;
 			sourceTree = "<group>";
@@ -298,7 +304,9 @@
 				D49AEBB72C23CE1B00018036 /* FLOError.swift in Sources */,
 				D4C077ED2C267A9E0083A53F /* ProgramCategoryModel.swift in Sources */,
 				D4C077DF2C2576B10083A53F /* StandardHeaderView.swift in Sources */,
+				D4C078262C26F1390083A53F /* BrowserViewController + UICollectionViewCompositionalLayout.swift in Sources */,
 				D4C077E32C265B5C0083A53F /* ChartHeaderView.swift in Sources */,
+				D4C078242C26F0E70083A53F /* BrowserViewController + DataSource.swift in Sources */,
 				D4C078222C26D0200083A53F /* PageIndicatorFooterView.swift in Sources */,
 				D49AEBEA2C2460BC00018036 /* MusicCell.swift in Sources */,
 				D49AEBEF2C25040900018036 /* TrackDetailModel.swift in Sources */,
