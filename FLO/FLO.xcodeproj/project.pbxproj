@@ -39,6 +39,7 @@
 		D4C077F32C26800F0083A53F /* BrowserReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C077F22C26800F0083A53F /* BrowserReactor.swift */; };
 		D4C0781C2C26BF440083A53F /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = D4C0781B2C26BF440083A53F /* RxCocoa */; };
 		D4C0781F2C26BF780083A53F /* ReactorKit in Frameworks */ = {isa = PBXBuildFile; productRef = D4C0781E2C26BF780083A53F /* ReactorKit */; };
+		D4C078222C26D0200083A53F /* PageIndicatorFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C078212C26D0200083A53F /* PageIndicatorFooterView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +69,7 @@
 		D4C077EC2C267A9E0083A53F /* ProgramCategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramCategoryModel.swift; sourceTree = "<group>"; };
 		D4C077F02C267AC20083A53F /* VideoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoModel.swift; sourceTree = "<group>"; };
 		D4C077F22C26800F0083A53F /* BrowserReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserReactor.swift; sourceTree = "<group>"; };
+		D4C078212C26D0200083A53F /* PageIndicatorFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageIndicatorFooterView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +178,7 @@
 				D4C077E02C25A4710083A53F /* VideoCell.swift */,
 				D4C077E22C265B5C0083A53F /* ChartHeaderView.swift */,
 				D4C077E42C2663E80083A53F /* ChartSectionBackgroundView.swift */,
+				D4C078212C26D0200083A53F /* PageIndicatorFooterView.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -296,6 +299,7 @@
 				D4C077ED2C267A9E0083A53F /* ProgramCategoryModel.swift in Sources */,
 				D4C077DF2C2576B10083A53F /* StandardHeaderView.swift in Sources */,
 				D4C077E32C265B5C0083A53F /* ChartHeaderView.swift in Sources */,
+				D4C078222C26D0200083A53F /* PageIndicatorFooterView.swift in Sources */,
 				D49AEBEA2C2460BC00018036 /* MusicCell.swift in Sources */,
 				D49AEBEF2C25040900018036 /* TrackDetailModel.swift in Sources */,
 				D49AEBEC2C2467E300018036 /* GenreCell.swift in Sources */,
