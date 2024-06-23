@@ -20,17 +20,19 @@ enum BrowserSection {
 final class BrowserReactor: Reactor {
     enum Action {
         case viewDidLoad
-        case onTapAchor
+        case onTapAnchor(section: StickyHeaderType)
+        case changedAnchor(section: StickyHeaderType)
     }
     
     enum Mutation {
         case setDatasource(data: BrowserModel?)
-        case setAnchor
+        case setAnchor(section: StickyHeaderType)
     }
     
     struct State {
         var dataSource: [BrowserSection] = []
         var currentPage: Int = 0
+        var selectedAnchor: StickyHeaderType = .music
     }
     
     let initialState = State()
@@ -41,8 +43,10 @@ final class BrowserReactor: Reactor {
         case .viewDidLoad:
             return fetchData()
                 .map { Mutation.setDatasource(data: $0) }
-        case .onTapAchor:
-            return Observable.just(Mutation.setAnchor)
+        case let .onTapAnchor(section):
+            return Observable.just(Mutation.setAnchor(section: section))
+        case let .changedAnchor(section):
+            return Observable.just(Mutation.setAnchor(section: section))
         }
     }
     
@@ -61,9 +65,9 @@ final class BrowserReactor: Reactor {
             newState.dataSource = dataSource
             return newState
 
-        case .setAnchor:
-            //TODO: Anchor click 시 scroll 처리 필요
+        case let .setAnchor(section):
             var newState  = state
+            newState.selectedAnchor = section
             return newState
         }
     }
