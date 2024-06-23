@@ -9,6 +9,15 @@ import UIKit
 
 class VideoCell: UICollectionViewCell {
     static let reuseIdentifier = "VideoCell"
+    
+    private let verticalStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.alignment = .leading
+        stackView.spacing = 2
+        return stackView
+    }()
+    
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.layer.cornerRadius = 8
@@ -29,14 +38,6 @@ class VideoCell: UICollectionViewCell {
         label.font = .systemFont(ofSize: 14, weight: .bold)
         label.textColor = .white
         return label
-    }()
-    
-    private let descriptionStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.alignment = .leading
-        stackView.spacing = 2
-        return stackView
     }()
     
     private let titleLabel: UILabel = {
@@ -65,16 +66,15 @@ class VideoCell: UICollectionViewCell {
     func setupViews() {
         self.backgroundColor = .clear
         
-        self.contentView.addSubview(self.imageView)
-        self.contentView.addSubview(self.descriptionStackView)
-        
+        self.contentView.addSubview(self.verticalStackView)
+        self.verticalStackView.addArrangedSubview(self.imageView)
+        self.verticalStackView.addArrangedSubview(self.titleLabel)
+        self.verticalStackView.addArrangedSubview(self.singerLabel)
         self.imageView.addSubview(playTimeView)
         self.playTimeView.addSubview(self.playTimeLabel)
-        self.descriptionStackView.addArrangedSubview(self.titleLabel)
-        self.descriptionStackView.addArrangedSubview(self.singerLabel)
         
-        self.imageView.snp.makeConstraints {
-            $0.top.left.trailing.equalToSuperview()
+        self.verticalStackView.snp.makeConstraints {
+            $0.top.trailing.bottom.leading.equalToSuperview()
         }
         
         self.playTimeView.snp.makeConstraints {
@@ -84,12 +84,6 @@ class VideoCell: UICollectionViewCell {
         
         self.playTimeLabel.snp.makeConstraints {
             $0.edges.equalTo(self.playTimeView).inset(4)
-//            $0.center.equalTo(self.playTimeView)
-        }
-        
-        self.descriptionStackView.snp.makeConstraints {
-            $0.top.equalTo(self.imageView.snp.bottom).offset(8)
-            $0.bottom.equalToSuperview()
         }
     }
     
@@ -97,8 +91,7 @@ class VideoCell: UICollectionViewCell {
         guard let video = video else {
             return
         }
-        
-            if let url = video.thumbnailImageList.first?.url,
+        if let url = video.thumbnailImageList.first?.url,
            let imageUrl = URL(string: url) {
             self.imageView.kf.setImage(with: imageUrl)
         }
