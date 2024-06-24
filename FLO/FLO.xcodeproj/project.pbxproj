@@ -27,7 +27,6 @@
 		D49AEBEA2C2460BC00018036 /* MusicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49AEBE92C2460BC00018036 /* MusicCell.swift */; };
 		D49AEBEC2C2467E300018036 /* GenreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49AEBEB2C2467E300018036 /* GenreCell.swift */; };
 		D49AEBEF2C25040900018036 /* TrackDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49AEBEE2C25040900018036 /* TrackDetailModel.swift */; };
-		D49AEBF22C25306A00018036 /* Mock.json in Resources */ = {isa = PBXBuildFile; fileRef = D49AEBF02C25306A00018036 /* Mock.json */; };
 		D4C077DF2C2576B10083A53F /* StandardHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C077DE2C2576B10083A53F /* StandardHeaderView.swift */; };
 		D4C077E12C25A4710083A53F /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C077E02C25A4710083A53F /* VideoCell.swift */; };
 		D4C077E32C265B5C0083A53F /* ChartHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C077E22C265B5C0083A53F /* ChartHeaderView.swift */; };
@@ -64,7 +63,6 @@
 		D49AEBE92C2460BC00018036 /* MusicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicCell.swift; sourceTree = "<group>"; };
 		D49AEBEB2C2467E300018036 /* GenreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreCell.swift; sourceTree = "<group>"; };
 		D49AEBEE2C25040900018036 /* TrackDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackDetailModel.swift; sourceTree = "<group>"; };
-		D49AEBF12C25306A00018036 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = en; path = en.lproj/Mock.json; sourceTree = "<group>"; };
 		D4C077DE2C2576B10083A53F /* StandardHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardHeaderView.swift; sourceTree = "<group>"; };
 		D4C077E02C25A4710083A53F /* VideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
 		D4C077E22C265B5C0083A53F /* ChartHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartHeaderView.swift; sourceTree = "<group>"; };
@@ -121,17 +119,13 @@
 		D49AEB902C21658D00018036 /* FLO */ = {
 			isa = PBXGroup;
 			children = (
-				D4C0782E2C293D130083A53F /* Extension */,
+				D4C078332C29421E0083A53F /* App Launch */,
 				D49AEBED2C2503F500018036 /* Models */,
 				D49AEBB82C23DA6300018036 /* Presentation */,
 				D49AEBA52C23B70B00018036 /* Network */,
-				D49AEB912C21658D00018036 /* AppDelegate.swift */,
-				D49AEB932C21658D00018036 /* SceneDelegate.swift */,
+				D4C0782E2C293D130083A53F /* Extension */,
+				D4C078322C2941C70083A53F /* Supporting Files */,
 				D49AEB972C21658D00018036 /* Main.storyboard */,
-				D49AEB9A2C21658F00018036 /* Assets.xcassets */,
-				D49AEB9C2C21658F00018036 /* LaunchScreen.storyboard */,
-				D49AEB9F2C21658F00018036 /* Info.plist */,
-				D49AEBF02C25306A00018036 /* Mock.json */,
 			);
 			path = FLO;
 			sourceTree = "<group>";
@@ -188,8 +182,8 @@
 			children = (
 				D49AEBE92C2460BC00018036 /* MusicCell.swift */,
 				D49AEBEB2C2467E300018036 /* GenreCell.swift */,
-				D4C077DE2C2576B10083A53F /* StandardHeaderView.swift */,
 				D4C077E02C25A4710083A53F /* VideoCell.swift */,
+				D4C077DE2C2576B10083A53F /* StandardHeaderView.swift */,
 				D4C077E22C265B5C0083A53F /* ChartHeaderView.swift */,
 				D4C077E42C2663E80083A53F /* ChartSectionBackgroundView.swift */,
 				D4C078212C26D0200083A53F /* PageIndicatorFooterView.swift */,
@@ -200,13 +194,13 @@
 		D49AEBED2C2503F500018036 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				D4C077E62C267A120083A53F /* HomeModel */,
-				D49AEBEE2C25040900018036 /* TrackDetailModel.swift */,
+				D4C077E62C267A120083A53F /* Browser */,
+				D4C078312C2941610083A53F /* TrackDetail */,
 			);
 			path = Models;
 			sourceTree = "<group>";
 		};
-		D4C077E62C267A120083A53F /* HomeModel */ = {
+		D4C077E62C267A120083A53F /* Browser */ = {
 			isa = PBXGroup;
 			children = (
 				D49AEBBA2C23E13500018036 /* BrowserModel.swift */,
@@ -215,7 +209,7 @@
 				D4C077EC2C267A9E0083A53F /* ProgramCategoryModel.swift */,
 				D4C077F02C267AC20083A53F /* VideoModel.swift */,
 			);
-			path = HomeModel;
+			path = Browser;
 			sourceTree = "<group>";
 		};
 		D4C078292C286DFC0083A53F /* TrackDetail */ = {
@@ -233,6 +227,33 @@
 				D4C0782F2C293D310083A53F /* UIAlertController + Extension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		D4C078312C2941610083A53F /* TrackDetail */ = {
+			isa = PBXGroup;
+			children = (
+				D49AEBEE2C25040900018036 /* TrackDetailModel.swift */,
+			);
+			path = TrackDetail;
+			sourceTree = "<group>";
+		};
+		D4C078322C2941C70083A53F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D49AEB9F2C21658F00018036 /* Info.plist */,
+				D49AEB9A2C21658F00018036 /* Assets.xcassets */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D4C078332C29421E0083A53F /* App Launch */ = {
+			isa = PBXGroup;
+			children = (
+				D49AEB9C2C21658F00018036 /* LaunchScreen.storyboard */,
+				D49AEB912C21658D00018036 /* AppDelegate.swift */,
+				D49AEB932C21658D00018036 /* SceneDelegate.swift */,
+			);
+			path = "App Launch";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -313,7 +334,6 @@
 				D49AEB9B2C21658F00018036 /* Assets.xcassets in Resources */,
 				D49AEB9E2C21658F00018036 /* Base in Resources */,
 				D49AEB992C21658D00018036 /* Base in Resources */,
-				D49AEBF22C25306A00018036 /* Mock.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -370,14 +390,6 @@
 				D49AEB9D2C21658F00018036 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		D49AEBF02C25306A00018036 /* Mock.json */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D49AEBF12C25306A00018036 /* en */,
-			);
-			name = Mock.json;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -511,7 +523,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 547KV58FND;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = FLO/Info.plist;
+				INFOPLIST_FILE = "FLO/Supporting Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -539,7 +551,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 547KV58FND;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = FLO/Info.plist;
+				INFOPLIST_FILE = "FLO/Supporting Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
