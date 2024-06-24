@@ -13,6 +13,7 @@ import Moya
 enum FLOError: Error {
     case moyaError(MoyaError)
     case customError
+    case unknown
     
     var localizedDescription: String {
         switch self {
@@ -20,6 +21,8 @@ enum FLOError: Error {
             return error.localizedDescription
         case .customError:
             return "특정한 에러입니다."
+        case .unknown:
+            return "알수없는 에러입니다."
         }
     }
     

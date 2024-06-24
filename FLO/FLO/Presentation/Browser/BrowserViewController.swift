@@ -170,6 +170,15 @@ class BrowserViewController: UIViewController, View {
                 }
             })
             .disposed(by: disposeBag)
+        
+        /// error handling
+        reactor.pulse(\.$errorMessage)
+            .compactMap { $0 }
+            .subscribe(onNext: { [weak self] message in
+                let alertController = UIAlertController.makeOneButtonAlertViewController(message: message)
+                self?.present(alertController, animated: true)
+            })
+            .disposed(by: disposeBag)
     }
     
     private func scrollToSection(_ section: Int)  {
@@ -182,17 +191,3 @@ class BrowserViewController: UIViewController, View {
         }
     }
 }
-
-extension UIViewController: UICollectionViewDelegate {
-    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //TODO: music cell 눌렀을 때 상세화면 이동
-    }
-    
-    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView.contentOffset.y > 500 {
-            
-        }
-    }
-}
-
-

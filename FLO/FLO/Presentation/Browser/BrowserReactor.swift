@@ -25,14 +25,16 @@ final class BrowserReactor: Reactor {
     }
     
     enum Mutation {
-        case setDatasource(data: BrowserModel?)
-        case setAnchor(section: StickyHeaderType)
+        case setDatasource(BrowserModel?)
+        case setAnchor(StickyHeaderType)
+        case setErrorMessage(FLOError?)
     }
     
     struct State {
         var dataSource: [BrowserSection] = []
         var currentPage: Int = 0
         var selectedAnchor: StickyHeaderType = .music
+        @Pulse var errorMessage: String = ""
     }
     
     let initialState = State()
@@ -41,12 +43,21 @@ final class BrowserReactor: Reactor {
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .viewDidLoad:
-            return fetchData()
-                .map { Mutation.setDatasource(data: $0) }
+            let mutation = fetchData()
+                .map {
+                    return Mutation.setDatasource($0)
+                }
+                .catch {
+                    guard let error = $0 as? FLOError else {
+                        return Observable.just(Mutation.setErrorMessage(.unknown))
+                    }
+                    return Observable.just(Mutation.setErrorMessage(error))
+                }
+            return mutation
         case let .onTapAnchor(section):
-            return Observable.just(Mutation.setAnchor(section: section))
+            return Observable.just(Mutation.setAnchor(section))
         case let .changedAnchor(section):
-            return Observable.just(Mutation.setAnchor(section: section))
+            return Observable.just(Mutation.setAnchor(section))
         }
     }
     
@@ -69,6 +80,11 @@ final class BrowserReactor: Reactor {
             var newState  = state
             newState.selectedAnchor = section
             return newState
+        case let .setErrorMessage(error):
+            guard let error = error else { return state }
+            var newState = state
+            newState.errorMessage = error.displayErrorMessage
+            return newState
         }
     }
     
@@ -78,10 +94,5 @@ final class BrowserReactor: Reactor {
             .map { response -> BrowserModel? in
                 return response.data
             }
-            .do(onError: { error in
-                // TODO: AlertView
-                print(error)
-            })
-            .catchAndReturn(nil)
     }
 }

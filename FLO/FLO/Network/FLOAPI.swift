@@ -14,7 +14,7 @@ enum FLOAPI: TargetType {
     
     /// APIList
     case browser
-    case trackDetail(trackId: String)
+    case trackDetail(trackId: Int)
     
     var baseURL: URL {
         return URL(string: "https://raw.githubusercontent.com/dreamus-ios/challenge/main")!
@@ -22,7 +22,7 @@ enum FLOAPI: TargetType {
     
     var path: String {
         switch self {
-        case .browser                 : return "/browser"
+        case .browser                 : return "/browse"
         case let .trackDetail(trackId): return "/track/\(trackId)"
         }
     }
@@ -52,7 +52,7 @@ extension FLOAPI {
         return provider.request(.browser)
     }
     
-    static func trackDetail(trackId: String) -> Observable<APIResponse<TrackDetailModel>> {
+    static func trackDetail(trackId: Int) -> Observable<APIResponse<TrackDetailModel>> {
         return provider.request(.trackDetail(trackId: trackId))
     }
 }
