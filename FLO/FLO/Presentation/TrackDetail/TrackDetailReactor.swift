@@ -17,13 +17,13 @@ final class TrackDetailReactor: Reactor {
     enum Mutation {
         case setTrackDetil(TrackDetailModel?)
         case dismiss(UIViewController)
-//        case setAlertMessage(String)
+        case setErrorMessage(FLOError?)
     }
     
     struct State {
         var trackId: Int?
         var trackDetail: TrackDetailModel?
-//        @Pulse var alertMessage: String?
+        @Pulse var errorMessage: String = ""
         
         init(trackId: Int?) {
             self.trackId = trackId
@@ -40,12 +40,17 @@ final class TrackDetailReactor: Reactor {
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .viewDidLoad:
-            return fetchData()
-                .map { Mutation.setTrackDetil($0) }
+            let mutation = fetchData()
+                .map { return Mutation.setTrackDetil($0)}
+                .catch {
+                    guard let error = $0 as? FLOError else {
+                        return Observable.just(Mutation.setErrorMessage(.unknown))
+                    }
+                    return Observable.just(Mutation.setErrorMessage(error))
+                }
+            return mutation
         case let .onTapDismissButton(viewController):
             return Observable.just(Mutation.dismiss(viewController))
-//        case let .setAlertMessage(message):
-//            return Observable.just(Mutation.setAlertMessage(message))
         }
     }
     
@@ -59,6 +64,11 @@ final class TrackDetailReactor: Reactor {
         case let .dismiss(viewController):
             viewController.dismiss(animated: true)
             return state
+        case let .setErrorMessage(error):
+            guard let error = error else { return state }
+            var newState = state
+            newState.errorMessage = error.displayErrorMessage
+            return newState
         }
     }
     
@@ -71,10 +81,5 @@ final class TrackDetailReactor: Reactor {
             .map { response -> TrackDetailModel? in
                 return response.data
             }
-            .do(onError: { error in
-                // TODO: AlertView
-                print(error)
-            })
-            .catchAndReturn(nil)
     }
 }

@@ -121,5 +121,14 @@ class TrackDetailViewController: UIViewController, View {
                 self?.lyricsLabel.text = $0.lyrics
             })
             .disposed(by: disposeBag)
+        
+        /// error handling
+        reactor.pulse(\.$errorMessage)
+            .compactMap { $0 }
+            .subscribe(onNext: { [weak self] message in
+                let alertController = UIAlertController.makeOneButtonAlertViewController(message: message)
+                self?.present(alertController, animated: true)
+            })
+            .disposed(by: disposeBag)
     }
 }
