@@ -45,6 +45,7 @@ class TrackDetailViewController: UIViewController, View {
     
     private let dismissButton: UIButton = {
         let button = UIButton()
+        button.accessibilityIdentifier = "dismissButton"
         button.setImage(UIImage(systemName: "xmark"), for: .normal)
         button.tintColor = .black
         return button
