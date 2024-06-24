@@ -34,3 +34,6 @@ FLO 앱
 - Error Handling
   - [x] Newtork Error 발생 시, Alert Present
   
+## 참고
+- SPM 관련 Build Error가 발생한다면, Package.resolved를 지우고 다시 빌드해주세요.
+  (FLO.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved)
