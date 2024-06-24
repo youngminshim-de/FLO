@@ -162,7 +162,10 @@ class BrowserViewController: UIViewController, View {
                 switch self.dataSource[indexPath.section] {
                 case let .music(chart):
                     let trackId = chart.trackList[indexPath.row].id
-                    //TODO: TrackDetail Page로 이동
+                    let viewController = TrackDetailViewController()
+                    viewController.view.backgroundColor = .white
+                    viewController.reactor = TrackDetailReactor(initialState: .init(trackId: trackId))
+                    self.present(viewController, animated: true)
                 default: return
                 }
             })
@@ -191,3 +194,5 @@ extension UIViewController: UICollectionViewDelegate {
         }
     }
 }
+
+
