@@ -12,9 +12,31 @@ struct TrackDetailModel: Decodable {
     let name: String
     let lyrics: String
     let playTime: String
-    let album: Album
-    let representationArtist: RepresentationArtist
+    let album: Album?
+    let representationArtist: RepresentationArtist?
     let trackArtistList: [TrackArtist]
+    
+    enum CodingKeys: CodingKey {
+        case id
+        case name
+        case lyrics
+        case playTime
+        case album
+        case representationArtist
+        case trackArtistList
+    }
+    
+    init(from decoder: any Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        self.id = (try? container.decode(Int.self, forKey: .id)) ?? 0
+        self.name = (try? container.decode(String.self, forKey: .name)) ?? ""
+        self.lyrics = (try? container.decode(String.self, forKey: .lyrics)) ?? "가사 정보 없음"
+        self.playTime = (try? container.decode(String.self, forKey: .playTime)) ?? ""
+        self.album = try? container.decode(Album.self, forKey: .album)
+        self.representationArtist = try? container.decode(RepresentationArtist.self, forKey: .representationArtist)
+        self.trackArtistList = (try? container.decode([TrackArtist].self, forKey: .trackArtistList)) ?? []
+    }
 }
 
 struct TrackArtist: Decodable {
