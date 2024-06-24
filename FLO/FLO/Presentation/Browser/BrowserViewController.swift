@@ -92,7 +92,6 @@ class BrowserViewController: UIViewController, View {
         view.register(StandardHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: StandardHeaderView.reuseIdentifier)
         view.register(PageIndicatorFooterView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: PageIndicatorFooterView.reuseIdentifier)
         view.dataSource = self
-        view.delegate = self
         return view
     }()
     

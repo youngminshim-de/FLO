@@ -22,7 +22,7 @@ enum FLOAPI: TargetType {
     
     var path: String {
         switch self {
-        case .browser                 : return "/browse"
+        case .browser                 : return "/browser"
         case let .trackDetail(trackId): return "/track/\(trackId)"
         }
     }
